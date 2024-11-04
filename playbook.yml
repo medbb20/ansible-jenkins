@@ -3,4 +3,5 @@
   roles:
     - role: nginx
       vars:
-        mavariable: "{{ mavariable | default('DEFAUT') }}
+        mavariable: "{{ mavariable | default('DEFAUT') }}"
+
