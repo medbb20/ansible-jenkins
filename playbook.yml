@@ -1,8 +1,15 @@
 
+---
 - name: install nginx
   hosts: all
-  become: yes
-  roles:
-    - nginx
+  tasks:
+    - name: install nginx on centos
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "centos"
+
+    
+
 
 
