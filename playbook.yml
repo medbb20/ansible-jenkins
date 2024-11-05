@@ -1,9 +1,11 @@
 
-- name: install nginx 
+- name: install nginx
   hosts: all
   tasks:
     - name: install nginx on centos
       yum:
-      name: nginx
+        name: nginx
+        state: present
+
       
 
