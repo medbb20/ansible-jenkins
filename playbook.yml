@@ -1,7 +1,9 @@
-- hosts: all
-  become: true
-  roles:
-    - role: nginx
-      vars:
-        mavariable: "{{ mavariable | default('DEFAUT') }}"
+
+- name: install nginx 
+  hosts: all
+  tasks:
+    - name: install nginx on centos
+      yum:
+      name: nginx
+      
 
