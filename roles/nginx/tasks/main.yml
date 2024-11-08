@@ -10,12 +10,12 @@
         update_cache: true
         cache_valid_time: 3600
 
-    - name: Start Nginx
-      service:
-        name: nginx
-        state: started
-        enabled: true  # Ensure the service starts on boot
-        force: yes     # Force restart, in case it's already running
+   - name: Start Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  changed_when: true  # Forces Ansible to treat this as "changed"
 
     - name: Deploy Index Page
       template:
