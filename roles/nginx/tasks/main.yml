@@ -1,20 +1,23 @@
-- name: install nginx
-  yum: 
-    name:
-      - nginx
-    state: present
-    update_cache: true
-    cache_valid_time: 3600
-  become: yes
+- name: Nginx Installation and Configuration
+  hosts: all 
+  become: yes 
 
-- name: start nginx
-  service:
-    name: nginx
-    state: started
-  become: yes
+  tasks:
+    - name: Install Nginx
+      yum: 
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
 
-- name: index
-  template:
-    src: index.html.j2
-    dest: /usr/share/nginx/html/index.html
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Deploy Index Page
+      template:
+        src: index.html.j2
+        dest: /usr/share/nginx/html/index.html
+
 
