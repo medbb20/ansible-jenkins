@@ -14,10 +14,20 @@
       service:
         name: nginx
         state: started
+        enabled: true  # Ensure the service starts on boot
+        force: yes     # Force restart, in case it's already running
 
     - name: Deploy Index Page
       template:
         src: index.html.j2
         dest: /usr/share/nginx/html/index.html
+      notify: Reload Nginx  # Add a handler to reload Nginx after deployment
+
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
+
 
 
